@@ -6,7 +6,7 @@
 /*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 22:27:59 by jboo              #+#    #+#             */
-/*   Updated: 2022/03/24 22:28:01 by jboo             ###   ########.fr       */
+/*   Updated: 2022/03/25 21:06:59 by jboo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ char	*ft_strchr(const char *s, int c)
 	{
 		return (0);
 	}
-	while (*s)
+	while (1)
 	{
 		if (*s == c)
 		{
 			return ((char *)s);
+		}
+		if (!*s)
+		{
+			return (0);
 		}
 		s++;
 	}

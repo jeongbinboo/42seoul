@@ -18,6 +18,7 @@ FILES = ft_isprint.c \
 		ft_toupper.c\
 		ft_tolower.c\
 		ft_strchr.c\
+		ft_strrchr.c\
 		
 FILES_OBJS=$(FILES:.c=.o)
 
