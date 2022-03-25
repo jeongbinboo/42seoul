@@ -2,3 +2,5 @@
 /Libft/libft/*.o
 /Libft/libft/libft.a
 /Libft/libft/libft-war-machine
+/Libft/libft/test.c
+/Libft/libft/a.out
