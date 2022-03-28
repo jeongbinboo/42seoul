@@ -19,7 +19,10 @@ FILES = ft_isprint.c \
 		ft_tolower.c\
 		ft_strchr.c\
 		ft_strrchr.c\
-		
+		ft_memchr.c\
+		ft_memcmp.c\
+		ft_strnstr.c\
+
 FILES_OBJS=$(FILES:.c=.o)
 
 all : $(NAME)
