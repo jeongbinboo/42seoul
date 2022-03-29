@@ -37,7 +37,7 @@ int	chk_sign(char *str)
 	return (cnt);
 }
 
-int	check_char(char str, int *flag, int *result)
+int	check_char(char str, int *flag, long *result)
 {
 	if (str == 32 || (str >= 9 && str <= 13))
 	{
@@ -63,9 +63,9 @@ int	check_char(char str, int *flag, int *result)
 
 int	ft_atoi(char *str)
 {
-	int	result;
-	int	i;
-	int	flag;
+	long	result;
+	int		i;
+	int		flag;
 
 	i = 0;
 	result = 0;
