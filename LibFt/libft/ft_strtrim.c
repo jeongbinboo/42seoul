@@ -5,6 +5,8 @@ char    *ft_strtrim(char const *s1, char const *set)
     size_t  right;
     char    *tmp;
 
+    if(!s1 || !set)
+        return (0);
     left = 0;
     right = ft_strlen((char *)s1) - 1;
     while (s1[left] && ft_strchr(set,s1[left]))
