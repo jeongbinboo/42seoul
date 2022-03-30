@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <stdio.h>
 int checkLen(char *str, char c)
 {
     int cnt;
