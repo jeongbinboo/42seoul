@@ -28,6 +28,7 @@ FILES = ft_isprint.c \
 		ft_substr.c\
 		ft_strjoin.c\
 		ft_strtrim.c\
+		ft_split.c\
 		
 FILES_OBJS=$(FILES:.c=.o)
 
