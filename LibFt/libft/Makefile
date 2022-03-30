@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME=libft.a
-FILES = ft_isprint.c \
+FILES =	ft_isprint.c \
 		ft_strlen.c \
 		ft_atoi.c \
 		ft_isascii.c \
@@ -35,22 +35,43 @@ FILES = ft_isprint.c \
 		ft_putstr_fd.c\
 		ft_putendl_fd.c\
 		ft_putnbr_fd.c\
-		
+
+BONUS_FILES =	ft_lstnew.c \
+				ft_lstadd_front.c\
+				ft_lstsize.c\
+				ft_lstlast.c\
+				ft_lstadd_back.c\
+				ft_lstdelone.c\
+				ft_lstclear.c\
+				ft_lstiter.c\
+				ft_lstmap.c\
+
 FILES_OBJS=$(FILES:.c=.o)
+BONUS_OBJS=$(BONUS_FILES:.c=.o)
+
+ifdef WITH_BONUS
+	OBJ_FILES = $(FILES_OBJS) $(BONUS_OBJS)
+else
+	OBJ_FILES = $(FILES_OBJS)
+endif
 
 all : $(NAME)
 
-$(NAME) : $(FILES_OBJS)
-	ar rc $(NAME) $(FILES_OBJS)
- 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $<
+.c.o: $(FILES) $(BONUS_FILES)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
+$(NAME) : $(OBJ_FILES)
+	ar rc $(NAME) $(OBJ_FILES)
+
+bonus:
+	make WITH_BONUS=1 all
 
 clean :
-	rm -rf $(FILES_OBJS)
+	rm -rf $(FILES_OBJS) $(BONUS_OBJS)
 
-fclean :
-	rm -rf $(NAME) $(FILES_OBJS)
+fclean : clean
+	rm -rf $(NAME)
 
-re :
-	fclean all
+re : fclean all
+
+.PHONY: all bonus clean fclean re
