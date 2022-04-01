@@ -90,7 +90,7 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	char	**tmp;
 
-	if (!s || !c)
+	if (!s)
 		return (0);
 	i = 0;
 	len = checkLen((char *)s, c);
