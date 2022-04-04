@@ -47,7 +47,7 @@ int	check_char(char str, int *flag, unsigned long long *result)
 	}
 	else if (str == '+' || str == '-')
 	{
-		if (*flag > 1)
+		if (*flag >= 1)
 			return (0);
 		*flag = 1;
 	}
