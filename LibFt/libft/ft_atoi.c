@@ -37,7 +37,7 @@ int	chk_sign(char *str)
 	return (cnt);
 }
 
-int	check_char(char str, int *flag, long *result)
+int	check_char(char str, int *flag, unsigned long long *result)
 {
 	if (str == 32 || (str >= 9 && str <= 13))
 	{
@@ -63,9 +63,9 @@ int	check_char(char str, int *flag, long *result)
 
 int	ft_atoi(char *str)
 {
-	long	result;
-	int		i;
-	int		flag;
+	unsigned long long	result;
+	int					i;
+	int					flag;
 
 	i = 0;
 	result = 0;
@@ -76,6 +76,10 @@ int	ft_atoi(char *str)
 			break ;
 		i++;
 	}
+	if (result > 2147483647 && !chk_sign(str) % 2)
+		return (-1);
+	else if (result > 2147483648 && chk_sign(str) % 2 != 0)
+		return (0);
 	if (chk_sign(str) % 2 != 0)
 		return (result * -1);
 	return (result);
