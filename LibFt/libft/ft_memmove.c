@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-void	ifDstIsBig(unsigned char *tmp, const void *src, size_t len)
+
+void	ifdstisbig(unsigned char *tmp, const void *src, size_t len)
 {
 	tmp += (len - 1);
 	src += (len - 1);
@@ -34,7 +35,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	tmp = (unsigned char *)dst;
 	if (dst > src)
 	{
-		ifDstIsBig(tmp, src, len);
+		ifdstisbig(tmp, src, len);
 	}
 	else
 	{

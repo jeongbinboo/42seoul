@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_strrchr(const char *string, int c)
 {
 	char	*tmp;
 	int		len;
-	
+
 	len = ft_strlen((char *)string);
 	tmp = (char *)string + len;
 	while (tmp >= string)

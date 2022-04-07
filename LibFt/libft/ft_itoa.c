@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-int	chkLen(int n)
+
+int	chklen(int n)
 {
 	int	len;
 
@@ -26,7 +27,7 @@ int	chkLen(int n)
 	return (len);
 }
 
-void	fillArr(char **tmp, int n, int flag, int len)
+void	fillarr(char **tmp, int n, int flag, int len)
 {
 	int	i;
 
@@ -50,7 +51,7 @@ void	fillArr(char **tmp, int n, int flag, int len)
 	}
 }
 
-char	*minValue(void)
+char	*minvalue(void)
 {
 	char	*tmp;
 	int		i;
@@ -81,16 +82,16 @@ char	*ft_itoa(int n)
 
 	flag = 0;
 	if (n == -2147483648)
-		return (minValue());
+		return (minvalue());
 	if (n < 0)
 	{
 		flag = 1;
 		n *= -1;
 	}
-	len = chkLen(n);
+	len = chklen(n);
 	tmp = (char *)malloc(sizeof(char) * (len + 1 + flag));
 	if (!tmp)
 		return (0);
-	fillArr(&tmp, n, flag, len + 1 + flag);
+	fillarr(&tmp, n, flag, len + 1 + flag);
 	return (tmp);
 }

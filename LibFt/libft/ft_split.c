@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-int	checkLen(char const *str, char c)
+
+int	checklen(char const *str, char c)
 {
 	int	cnt;
 	int	flag;
@@ -34,7 +35,7 @@ int	checkLen(char const *str, char c)
 	return (cnt);
 }
 
-void	setArr(char *tmp, char const **str, int len)
+void	setarr(char *tmp, char const **str, int len)
 {
 	int	i;
 
@@ -48,7 +49,7 @@ void	setArr(char *tmp, char const **str, int len)
 	tmp[i] = '\0';
 }
 
-int	resetArr(char **tmp, int i)
+int	resetarr(char **tmp, int i)
 {
 	while (i >= 0)
 	{
@@ -58,7 +59,7 @@ int	resetArr(char **tmp, int i)
 	return (0);
 }
 
-int	makeArr1(char **tmp, char const *str, char c, int len)
+int	makearr1(char **tmp, char const *str, char c, int len)
 {
 	int		i;
 	int		end;
@@ -73,13 +74,13 @@ int	makeArr1(char **tmp, char const *str, char c, int len)
 			end++;
 		tmp[i] = (char *)malloc(sizeof(char) * (end + 1));
 		if (!tmp[i])
-			return (resetArr(tmp, i));
+			return (resetarr(tmp, i));
 		if (!end)
 		{
 			tmp[i] = 0;
 			return (1);
 		}
-		setArr(tmp[i], &str, end + 1);
+		setarr(tmp[i], &str, end + 1);
 		i++;
 	}
 	return (1);
@@ -96,11 +97,11 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	while (s[i] != c && s[i])
 		i++;
-	len = checkLen(s, c);
+	len = checklen(s, c);
 	tmp = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!tmp)
 		return (0);
-	if (!makeArr1(tmp, s, c, (len + 1)))
+	if (!makearr1(tmp, s, c, (len + 1)))
 	{
 		free(tmp);
 		return (0);
