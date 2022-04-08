@@ -6,7 +6,7 @@
 /*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 12:47:12 by jboo              #+#    #+#             */
-/*   Updated: 2022/03/18 14:57:14 by jboo             ###   ########.fr       */
+/*   Updated: 2022/04/08 17:10:17 by jboo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -23,13 +23,13 @@ int	chk_sign(const char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 		{
 			if (i == 0)
-				break;
+				break ;
 			else
 			{
 				if (str[i - 1] == '-')
 				{
 					flag = 1;
-					break;
+					break ;
 				}
 			}
 		}
