@@ -22,7 +22,6 @@ FILES =	ft_isprint.c \
 		ft_memchr.c\
 		ft_memcmp.c\
 		ft_strnstr.c\
-		ft_memccpy.c\
 		ft_calloc.c\
 		ft_strdup.c\
 		ft_substr.c\

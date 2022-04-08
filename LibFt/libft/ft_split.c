@@ -73,14 +73,14 @@ int	makearr1(char **tmp, char const *str, char c, int len)
 			str++;
 		while (*(str + end) != c && *(str + end))
 			end++;
-		tmp[i] = (char *)malloc(sizeof(char) * (end + 1));
-		if (!tmp[i])
-			return (resetarr(tmp, i));
 		if (!end)
 		{
 			tmp[i] = 0;
 			return (1);
 		}
+		tmp[i] = (char *)malloc(sizeof(char) * (end + 1));
+		if (!tmp[i])
+			return (resetarr(tmp, i - 1));
 		setarr(tmp[i], &str, end + 1);
 		i++;
 	}

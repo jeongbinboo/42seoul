@@ -11,31 +11,31 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-int	chk_sign(char *str)
+int	chk_sign(const char *str)
 {
-	int	cnt;
-	int	i;
 	int	flag;
+	int	i;
 
-	cnt = 0;
 	i = 0;
 	flag = 0;
 	while (str[i])
 	{
-		if (str[i] == '-' || str[i] == '+')
+		if (str[i] >= '0' && str[i] <= '9')
 		{
-			if (str[i] == '-')
-				cnt++;
-			flag = 1;
-		}
-		else
-		{
-			if (flag == 1)
-				break ;
+			if (i == 0)
+				break;
+			else
+			{
+				if (str[i - 1] == '-')
+				{
+					flag = 1;
+					break;
+				}
+			}
 		}
 		i++;
 	}
-	return (cnt);
+	return (flag);
 }
 
 int	check_char(char str, int *flag, unsigned long long *result)
@@ -62,7 +62,7 @@ int	check_char(char str, int *flag, unsigned long long *result)
 	return (1);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	unsigned long long	result;
 	int					i;
@@ -77,11 +77,11 @@ int	ft_atoi(char *str)
 			break ;
 		i++;
 	}
-	if (result > 2147483647 && !chk_sign(str) % 2)
+	if (result > 2147483647 && !chk_sign(str))
 		return (-1);
-	else if (result > 2147483648 && chk_sign(str) % 2 != 0)
+	else if (result > 2147483648 && chk_sign(str))
 		return (0);
-	if (chk_sign(str) % 2 != 0)
+	if (chk_sign(str))
 		return (result * -1);
 	return (result);
 }
