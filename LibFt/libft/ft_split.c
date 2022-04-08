@@ -56,6 +56,7 @@ int	resetarr(char **tmp, int i)
 		free(tmp[i]);
 		i--;
 	}
+	free(tmp);
 	return (0);
 }
 
