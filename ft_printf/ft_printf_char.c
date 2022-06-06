@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _strlen.c                                          :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 18:10:07 by jboo              #+#    #+#             */
-/*   Updated: 2022/05/24 18:10:12 by jboo             ###   ########.fr       */
+/*   Created: 2022/06/06 12:14:10 by jboo              #+#    #+#             */
+/*   Updated: 2022/06/06 12:14:12 by jboo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-int	_strlen(char *str)
+void	print_char(char target, int *result)
 {
-	int	cnt;
-
-	cnt = 0;
-	while (str[cnt])
-		cnt++;
-	return (cnt);
+	write(1, &target, 1);
+	(*result)++;
 }

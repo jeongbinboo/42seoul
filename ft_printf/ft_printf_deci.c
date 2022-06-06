@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _strlen.c                                          :+:      :+:    :+:   */
+/*   ft_printf_deci.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 18:10:07 by jboo              #+#    #+#             */
-/*   Updated: 2022/05/24 18:10:12 by jboo             ###   ########.fr       */
+/*   Created: 2022/06/06 12:16:19 by jboo              #+#    #+#             */
+/*   Updated: 2022/06/06 12:16:20 by jboo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-int	_strlen(char *str)
+void	print_deci(int target, int *result)
 {
-	int	cnt;
+	char	*target_string;
 
-	cnt = 0;
-	while (str[cnt])
-		cnt++;
-	return (cnt);
+	target_string = _itoa(target);
+	write(1, target_string, _strlen(target_string));
+	(*result) += _strlen(target_string);
+	free(target_string);
+	target_string = NULL;
 }
