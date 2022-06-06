@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	check_format(const char format, va_list ap, int *result)
 {
@@ -58,13 +57,3 @@ int	ft_printf(const char *str, ...)
 	}
 	return (result);
 }
-
-/*int main()
-{
-	int	a = NULL;
-	int *p = NULL;
-	char b;
-
-	printf("printf = %d\n",printf("%u %x %X %p\n",a, a, a, p));
-	ft_printf("ft_printf = %d\n",ft_printf("%u %x %X %p\n",a, a, a, p));
-}*/
