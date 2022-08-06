@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/06 14:54:05 by jboo              #+#    #+#             */
+/*   Updated: 2022/08/06 14:54:27 by jboo             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	ft_strlen(char *str)
@@ -57,9 +69,28 @@ void	reset_buffer(char *buffer_read)
 	int	i;
 
 	i = 0;
-	while(i <= BUFFER_SIZE)
+	while (i <= BUFFER_SIZE)
 	{
 		buffer_read[i] = 0;
 		i++;
 	}
+}
+
+char	*chk_back_up(char **back_up)
+{
+	char	*ret;
+
+	if (*back_up)
+	{
+		if (chk_nl(*back_up) != -1)
+			return (make_return(back_up));
+		else
+		{
+			ret = *back_up;
+			*back_up = NULL;
+			return (ret);
+		}
+	}
+	else
+		return (NULL);
 }
