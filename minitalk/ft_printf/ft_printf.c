@@ -51,7 +51,7 @@ int	ft_printf(const char *str, ...)
 		else
 		{
 			write(1, str, 1);
-			result ++;
+			result++;
 		}
 		str++;
 	}

@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 12:17:13 by jboo              #+#    #+#             */
-/*   Updated: 2022/06/06 12:17:13 by jboo             ###   ########.fr       */
+/*   Created: 2022/08/25 15:20:12 by jboo              #+#    #+#             */
+/*   Updated: 2022/08/25 15:20:13 by jboo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-void	p_ptr(unsigned long long target, int *result, int flag)
+#include "minitalk.h"
+
+void	signal_handler(int signal)
 {
-	if (!target)
+	static int	result;
+	static int	count = 0;
+
+	result *= 2;
+	if (signal == SIGUSR2)
+		++result;
+	if (count == 7)
 	{
-		write(1, "0x", 2);
-		if (!flag)
-		{
-			write(1, "0", 1);
-			(*result)++;
-		}
-		(*result) += 2;
+		ft_printf("%c", result);
+		count = 0;
+		result = 0;
 		return ;
 	}
-	p_ptr(target / 16, result, 1);
-	write(1, &HEX_BASE_LOWER[target % 16], 1);
-	(*result)++;
+	++count;
+}
+
+int	main(void)
+{
+	ft_printf("server PID : %d\n", getpid());
+	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
+	while (1)
+		pause();
+	return (0);
 }

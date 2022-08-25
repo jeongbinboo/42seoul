@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
+/*   ft_printf_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 12:17:13 by jboo              #+#    #+#             */
-/*   Updated: 2022/06/06 12:17:13 by jboo             ###   ########.fr       */
+/*   Created: 2022/06/06 12:15:45 by jboo              #+#    #+#             */
+/*   Updated: 2022/06/06 12:15:46 by jboo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	p_ptr(unsigned long long target, int *result, int flag)
+void	print_str(char *target, int *result)
 {
 	if (!target)
 	{
-		write(1, "0x", 2);
-		if (!flag)
-		{
-			write(1, "0", 1);
-			(*result)++;
-		}
-		(*result) += 2;
+		write(1, "(null)", 6);
+		(*result) += 6;
 		return ;
 	}
-	p_ptr(target / 16, result, 1);
-	write(1, &HEX_BASE_LOWER[target % 16], 1);
-	(*result)++;
+	write(1, target, _strlen(target));
+	(*result) += _strlen(target);
 }

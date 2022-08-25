@@ -1,26 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboo <jboo@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 14:54:05 by jboo              #+#    #+#             */
-/*   Updated: 2022/08/06 14:54:27 by jboo             ###   ########.fr       */
+/*   Created: 2022/08/25 18:46:24 by jboo              #+#    #+#             */
+/*   Updated: 2022/08/25 18:46:25 by jboo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "get_next_line.h"
-
-int	ft_strlen(char *str)
-{
-	int	cnt;
-
-	cnt = 0;
-	while (str[cnt])
-		cnt++;
-	return (cnt);
-}
+#include "minitalk.h"
 
 size_t	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
@@ -46,6 +35,16 @@ size_t	ft_strlcpy(char *dest, char *src, unsigned int size)
 	return (cnt);
 }
 
+int	ft_strlen(char *str)
+{
+	int	cnt;
+
+	cnt = 0;
+	while (str[cnt])
+		cnt++;
+	return (cnt);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*tmp;
@@ -62,35 +61,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcpy(tmp, (char *)s1, s1_len + 1);
 	ft_strlcpy(tmp + s1_len, (char *)s2, s2_len + 1);
 	return (tmp);
-}
-
-void	reset_buffer(char *buffer_read)
-{
-	int	i;
-
-	i = 0;
-	while (i <= BUFFER_SIZE)
-	{
-		buffer_read[i] = 0;
-		i++;
-	}
-}
-
-char	*chk_back_up(char **back_up)
-{
-	char	*ret;
-
-	if (*back_up)
-	{
-		if (chk_nl(*back_up) != -1)
-			return (make_return(back_up));
-		else
-		{
-			ret = *back_up;
-			*back_up = NULL;
-			return (ret);
-		}
-	}
-	else
-		return (NULL);
 }
